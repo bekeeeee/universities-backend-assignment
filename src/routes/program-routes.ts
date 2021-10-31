@@ -1,6 +1,14 @@
 import { Router } from "express";
-import { createProgram, getProgram } from "../controller/program-controller";
-import { CreateProgramDto, GetProgramDto } from "../dto/program";
+import {
+  createProgram,
+  getProgram,
+  updateProgram,
+} from "../controller/program-controller";
+import {
+  CreateProgramDto,
+  GetProgramDto,
+  UpdateProgramDto,
+} from "../dto/program";
 import { ValidateRequestMiddleware } from "../middlewares/validate-requset-middleware";
 const router = Router();
 router.post(
@@ -15,4 +23,9 @@ router.get(
   getProgram
 );
 
+router.patch(
+  "/:id",
+  ValidateRequestMiddleware.withParams(UpdateProgramDto),
+  updateProgram
+);
 export { router as programRouter };
