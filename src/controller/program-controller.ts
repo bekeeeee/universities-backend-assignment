@@ -63,3 +63,10 @@ export const deleteProgram = catchAsync(async (req: Request, res: Response) => {
   const response = BaseHttpResponse.success(programDto);
   res.status(202).json(response);
 });
+
+export const getPrograms = catchAsync(async (req: Request, res: Response) => {
+  const programs = await Program.find().sort({ _id: -1 }).exec();
+  const programsDto = ProgamDto.fromMany(programs);
+  const response = BaseHttpResponse.success(programsDto);
+  res.status(200).json(response);
+});

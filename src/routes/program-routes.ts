@@ -4,6 +4,7 @@ import {
   getProgram,
   updateProgram,
   deleteProgram,
+  getPrograms,
 } from "../controller/program-controller";
 import {
   CreateProgramDto,
@@ -35,4 +36,7 @@ router.delete(
   ValidateRequestMiddleware.withParams(GetProgramDto),
   deleteProgram
 );
+
+router.get("/", getPrograms);
+
 export { router as programRouter };
