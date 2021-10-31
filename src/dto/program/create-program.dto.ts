@@ -9,7 +9,6 @@ export class CreateProgramDto {
   ) {}
 
   static from(body: Partial<CreateProgramDto>) {
-    console.log("body", body.school);
     Validate.validateStringSize(body.school!, 5, "school");
     Validate.validateStringSize(body.program!, 5, "program");
     Validate.validateStringSize(body.location!, 5, "location");

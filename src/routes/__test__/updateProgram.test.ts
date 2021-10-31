@@ -20,7 +20,6 @@ it("returns a 400 if the user provides an invalid input ", async () => {
     location: "test location",
     length: 1,
   });
-  console.log("response==", response.body);
   await request(app)
     .patch(`/api/v1/program/${response.body.data?.id}`)
     .send({
