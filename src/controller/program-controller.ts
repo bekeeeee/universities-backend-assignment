@@ -50,3 +50,16 @@ export const updateProgram = catchAsync(async (req: Request, res: Response) => {
   const response = BaseHttpResponse.success(program);
   res.status(200).json(response);
 });
+
+export const deleteProgram = catchAsync(async (req: Request, res: Response) => {
+  let program = await Program.findById(req.body.id);
+  if (!program) {
+    throw new BadRequestError("Program not found");
+  }
+
+  program = await Program.findByIdAndDelete(req.params.id);
+  const programDto = ProgamDto.from(program!);
+
+  const response = BaseHttpResponse.success(programDto);
+  res.status(202).json(response);
+});

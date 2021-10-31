@@ -3,6 +3,7 @@ import {
   createProgram,
   getProgram,
   updateProgram,
+  deleteProgram,
 } from "../controller/program-controller";
 import {
   CreateProgramDto,
@@ -27,5 +28,11 @@ router.patch(
   "/:id",
   ValidateRequestMiddleware.withParams(UpdateProgramDto),
   updateProgram
+);
+
+router.delete(
+  "/:id",
+  ValidateRequestMiddleware.withParams(GetProgramDto),
+  deleteProgram
 );
 export { router as programRouter };
