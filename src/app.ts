@@ -7,6 +7,8 @@ import mongoSanitize from "express-mongo-sanitize";
 import cors from "cors";
 import { NotFoundError } from "./errors/not-found-error";
 import { errorHandler } from "./middlewares/error-handler";
+import { programRouter } from "./routes/program-routes";
+
 import morgan from "morgan";
 
 const app = Express();
@@ -33,6 +35,8 @@ app.use(mongoSanitize());
 
 // Proxy
 app.set("trust proxy", true); //for reverse proxy
+
+app.use("/api/v1/program", programRouter);
 
 // Not found route
 app.all("*", async (req: Request, res: Response, next: NextFunction) => {

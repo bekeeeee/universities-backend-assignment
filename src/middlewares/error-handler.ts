@@ -1,6 +1,6 @@
 import { NextFunction, Response, Request } from "express";
 
-import { CustomerError } from "../errors/custome-error";
+import { CustomeError } from "../errors/custome-error";
 import {
   sendErrorDev,
   sendErrorProd,
@@ -16,7 +16,7 @@ export const errorHandler = (
 ) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
-  if (err instanceof CustomerError) {
+  if (err instanceof CustomeError) {
     const respnse = BaseHttpResponse.failed(err.serializeErrors()?.message);
     return res.status(respnse.statusCode).json(respnse);
   }
