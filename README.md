@@ -41,6 +41,12 @@ npm run build
 npm start
 ```
 
+or
+
+```
+npm run dev
+```
+
 Navigate to `http://localhost:5000`
 
 - API Document endpoints
